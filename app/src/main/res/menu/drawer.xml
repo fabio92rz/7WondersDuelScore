@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/live"
+            android:checked="false"
+            android:title="bla" />
+
+        <item
+            android:id="@+id/storico_partite"
+            android:checked="false"
+            android:title="blas" />
+
+        <item
+            android:id="@+id/insert_championship"
+            android:checked="false"
+            android:title="blao" />
+
+    </group>
+</menu>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/tool_bar" />
+
+            <TextView
+                android:id="@+id/player_divider"
+                android:layout_below="@id/toolbar"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textSize="35sp" />
+
+            <View
+                android:id="@+id/view_divider"
+                android:layout_width="50dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/player_divider"
+                android:layout_centerInParent="true"
+                android:background="@android:color/holo_blue_light" />
+
+            <EditText
+                android:id="@+id/player2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:hint="Player 2"
+                android:layout_below="@+id/toolbar"
+                android:layout_toRightOf="@+id/player_divider"
+                android:layout_toEndOf="@+id/player_divider" />
+
+            <EditText
+                android:id="@+id/player1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Player 1"
+                android:textColor="#616161"
+                android:textSize="20sp"
+                android:layout_below="@+id/toolbar"
+                android:layout_toLeftOf="@+id/player_divider"
+                android:layout_toStartOf="@+id/player_divider" />
+
+            <RelativeLayout
+                android:id="@+id/parentLayoutRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                tools:context=".ScoreActivity"
+                android:layout_below="@+id/view_divider"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_games1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPadding="2dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeCardLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="62dp"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/blue_card_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/cards"
+                            android:tint="#0D47A1" />
+
+                        <View
+                            android:id="@+id/startView"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/blue_card_icon"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/first_blue_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/startView"
+                            android:hint="Player 1 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#0D47A1"
+                            android:layout_centerHorizontal="true" />
+
+                        <View
+                            android:id="@+id/midView"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/first_blue_score"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/second_blue_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toEndOf="@id/midView"
+                            android:hint="Player 2 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#0D47A1" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_games2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPadding="2dp"
+                    android:layout_below="@+id/cv_games1"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeCardLayout2"
+                        android:layout_width="390dp"
+                        android:layout_height="62dp"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/green_card_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/cards"
+                            android:tint="#2E7D32" />
+
+                        <View
+                            android:id="@+id/startView2"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/green_card_icon"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/first_green_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/startView2"
+                            android:hint="Player 1 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#2E7D32"
+                            android:layout_centerHorizontal="true" />
+
+                        <View
+                            android:id="@+id/midView2"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/first_green_score"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/second_green_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toEndOf="@id/midView2"
+                            android:hint="Player 2 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#2E7D32" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_games3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPadding="2dp"
+                    android:layout_below="@+id/cv_games2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeCardLayout3"
+                        android:layout_width="390dp"
+                        android:layout_height="62dp"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/yellow_card_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/cards"
+                            android:tint="#FFD600" />
+
+                        <View
+                            android:id="@+id/startView3"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/yellow_card_icon"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/first_yellow_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/startView3"
+                            android:hint="Player 1 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#FFD600"
+                            android:layout_centerHorizontal="true" />
+
+                        <View
+                            android:id="@+id/midView3"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/first_yellow_score"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/second_yellow_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toEndOf="@id/midView3"
+                            android:hint="Player 2 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#FFD600" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_games4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:cardUseCompatPadding="true"
+                    card_view:contentPadding="2dp"
+                    android:layout_below="@+id/cv_games3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeCardLayout4"
+                        android:layout_width="390dp"
+                        android:layout_height="62dp"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/violet_card_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/cards"
+                            android:tint="#6A1B9A" />
+
+                        <View
+                            android:id="@+id/startView4"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/violet_card_icon"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/first_violet_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/startView4"
+                            android:hint="Player 1 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#6A1B9A"
+                            android:layout_centerHorizontal="true" />
+
+                        <View
+                            android:id="@+id/midView4"
+                            android:layout_width="1dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@id/first_violet_score"
+                            android:background="@android:color/black" />
+
+                        <EditText
+                            android:id="@+id/second_violet_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toEndOf="@id/midView4"
+                            android:hint="Player 2 Score"
+                            android:textSize="15sp"
+                            android:textColorHint="#6A1B9A" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/drawer">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/logout_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="Logout" />
+            </RelativeLayout>
+
+        </android.support.design.widget.NavigationView>
+    </android.support.v4.widget.DrawerLayout>
+
+</android.support.design.widget.CoordinatorLayout>
