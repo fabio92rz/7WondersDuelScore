@@ -41,13 +41,17 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         tabLayout.addTab(tabLayout.newTab().setText("Score"));
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         Pager tabAdapter = new Pager(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(tabAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(this);
+
+
+        viewPager.setCurrentItem(0);
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#607D8B"));
+        tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#607D8B"));
 
 
     }
@@ -57,9 +61,71 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
 
+        //Players
         if (tab.getPosition() == 0){
 
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#607D8B"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#607D8B"));
         }
+
+        //Civic
+        if (tab.getPosition() == 1){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+        }
+
+        //Science
+        if (tab.getPosition() == 2){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#4CAF50"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#4CAF50"));
+        }
+
+        //Commerce
+        if (tab.getPosition() == 3){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFF00"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFF00"));
+        }
+
+        //Guild
+        if (tab.getPosition() == 4){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#673AB7"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#673AB7"));
+        }
+
+        //Wonders
+        if (tab.getPosition() == 5){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+        }
+
+        //Money
+        if (tab.getPosition() == 6){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+        }
+
+        //Military
+        if (tab.getPosition() == 7){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+        }
+
+        //Score
+        if (tab.getPosition() == 7){
+
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+        }
+
+
+
 
     }
 
