@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
 
+        if (tab.getPosition() == 0){
+
+        }
+
     }
 
     @Override
