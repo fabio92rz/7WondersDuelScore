@@ -2,7 +2,10 @@ package com.example.fabio.a7wondersduelscore;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -36,8 +39,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         tabLayout.addTab(tabLayout.newTab().setText("Money"));
         tabLayout.addTab(tabLayout.newTab().setText("Military"));
         tabLayout.addTab(tabLayout.newTab().setText("Score"));
-
-
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 
@@ -45,9 +46,12 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         Pager tabAdapter = new Pager(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(tabAdapter);
-
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(this);
+
+
     }
+
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
