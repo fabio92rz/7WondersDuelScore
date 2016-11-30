@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tablayout_test);
+        setTitle("Score Sheet");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -99,29 +100,29 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         //Wonders
         if (tab.getPosition() == 5){
 
-            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
-            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#9E9E9E"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#9E9E9E"));
         }
 
         //Money
         if (tab.getPosition() == 6){
 
-            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
-            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#009688"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#009688"));
         }
 
         //Military
         if (tab.getPosition() == 7){
 
-            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
-            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#F44336"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#F44336"));
         }
 
         //Score
-        if (tab.getPosition() == 7){
+        if (tab.getPosition() == 8){
 
-            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
-            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+            tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#3F51B5"));
+            tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#3F51B5"));
         }
 
 

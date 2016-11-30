@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/box"
+                    />
+
+                <TextView
+                    android:text="Players"
+                    android:layout_width="wrap_content"
+                    android:textColor="#607D8B"
+                    android:textSize="15sp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/playerTextview" />
+            </TableRow>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#607D8B"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+
+                />
+        </TableLayout>
+
+    </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/new_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/plus" />
+</RelativeLayout>
