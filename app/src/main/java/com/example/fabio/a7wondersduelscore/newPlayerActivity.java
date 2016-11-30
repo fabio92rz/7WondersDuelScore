@@ -22,6 +22,7 @@ public class newPlayerActivity extends AppCompatActivity {
 
         getWindow().setLayout((int) (width * 0.8), (int) (height * 0.4));
 
+
     }
 
 
