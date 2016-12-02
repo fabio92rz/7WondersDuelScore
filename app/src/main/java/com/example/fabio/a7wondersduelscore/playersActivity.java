@@ -2,6 +2,7 @@ package com.example.fabio.a7wondersduelscore;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -22,7 +23,11 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     FloatingActionButton addPlayer;
     private static final int REQUEST_TEXT = 0;
     TextView playerOne;
+    TextView playerTwo;
     ImageView playerOneImage;
+    ImageView playerTwoImage;
+    ImageView modifyPlayerOne;
+    ImageView modifyPlayerTwo;
     private boolean hasText;
 
     //Overriden method onCreateView
@@ -36,6 +41,12 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
         playerOne = (TextView) v.findViewById(R.id.player1);
         playerOneImage = (ImageView) v.findViewById(R.id.player1Image);
+        modifyPlayerOne = (ImageView) v.findViewById(R.id.modifyPlayer1);
+
+        playerTwo = (TextView) v.findViewById(R.id.player2);
+        playerTwoImage = (ImageView) v.findViewById(R.id.player2Image);
+        modifyPlayerTwo = (ImageView) v.findViewById(R.id.modifiyPlayer2);
+
 
         return v;
     }
@@ -64,22 +75,33 @@ public class playersActivity extends Fragment implements View.OnClickListener {
             return;
         }
 
-        if (requestCode == REQUEST_TEXT)
-        {
+        if (requestCode == REQUEST_TEXT) {
             String text = data.getStringExtra(newPlayerActivity.nameKey);
             if (text.length() > 0)
-            {
-                playerOne.setText(text);
-                playerOneImage.setVisibility(View.VISIBLE);
-                hasText = true;
-            }
-            else
-            {
-                playerOne.setText(null);
-                hasText = false;
-            }
+                if (playerOne.getText().toString().equals("")) {
+
+                    playerOne.setText(text);
+                    playerOneImage.setVisibility(View.VISIBLE);
+                    modifyPlayerOne.setVisibility(View.VISIBLE);
+                    hasText = true;
+
+                } else {
+
+                    playerTwo.setText(text);
+                    playerTwoImage.setVisibility(View.VISIBLE);
+                    modifyPlayerTwo.setVisibility(View.VISIBLE);
+                    hasText = true;
+                }
+
+        } else {
+            playerOne.setText(null);
+            playerTwo.setText(null);
+            hasText = false;
         }
 
 
-    }
+        }
+
+
 }
+
