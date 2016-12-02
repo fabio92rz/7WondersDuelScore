@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
         tabLayout.addTab(tabLayout.newTab().setText("Players"));

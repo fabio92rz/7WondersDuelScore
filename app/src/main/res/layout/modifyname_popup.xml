@@ -12,7 +12,7 @@
         android:id="@+id/new_player_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/plus23" />
+        android:src="@drawable/pencil" />
 
     <TextView
         android:id="@+id/new_player_popup"
@@ -21,12 +21,12 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@id/new_player_image"
-        android:text="Add a Player"
+        android:text="Modify Name"
         android:textColor="#607D8B"
         android:textSize="25sp" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/name_text"
+        android:id="@+id/name_text_modify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -34,7 +34,7 @@
         android:textColorHint="#607D8B">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/name"
+            android:id="@+id/name_modify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#607D8B"
@@ -44,5 +44,3 @@
             android:textColorHint="#607D8B" />
     </android.support.design.widget.TextInputLayout>
 </RelativeLayout>
-
-

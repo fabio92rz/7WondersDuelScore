@@ -28,7 +28,8 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     ImageView playerTwoImage;
     ImageView modifyPlayerOne;
     ImageView modifyPlayerTwo;
-    private boolean hasText;
+    private boolean playerOnehasText = false;
+    private boolean playerTwohasText = false;
 
     //Overriden method onCreateView
     @Override
@@ -42,10 +43,12 @@ public class playersActivity extends Fragment implements View.OnClickListener {
         playerOne = (TextView) v.findViewById(R.id.player1);
         playerOneImage = (ImageView) v.findViewById(R.id.player1Image);
         modifyPlayerOne = (ImageView) v.findViewById(R.id.modifyPlayer1);
+        modifyPlayerOne.setOnClickListener(this);
 
         playerTwo = (TextView) v.findViewById(R.id.player2);
         playerTwoImage = (ImageView) v.findViewById(R.id.player2Image);
         modifyPlayerTwo = (ImageView) v.findViewById(R.id.modifiyPlayer2);
+        modifyPlayerTwo.setOnClickListener(this);
 
 
         return v;
@@ -64,43 +67,79 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
         }
 
+        if (v == modifyPlayerOne){
+
+            modifynameActivity modify = new modifynameActivity();
+            FragmentManager fm = getFragmentManager();
+            modify.setTargetFragment(playersActivity.this, REQUEST_TEXT);
+            modify.show(fm, "modifyPopup");
+        }
+
+        if (v == modifyPlayerTwo){
+
+            modifynameActivity modify = new modifynameActivity();
+            FragmentManager fm = getFragmentManager();
+            modify.setTargetFragment(playersActivity.this, REQUEST_TEXT);
+            modify.show(fm, "modifyPopup");
+        }
+
 
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode != Activity.RESULT_OK)
-        {
+        if (resultCode != Activity.RESULT_OK) {
             return;
         }
 
         if (requestCode == REQUEST_TEXT) {
             String text = data.getStringExtra(newPlayerActivity.nameKey);
-            if (text.length() > 0)
-                if (playerOne.getText().toString().equals("")) {
+            if (text.length() > 0 && !playerOne.getText().toString().equals(text) && !playerTwo.getText().toString().equals(text)) {
+
+                if (!playerOnehasText) {
 
                     playerOne.setText(text);
                     playerOneImage.setVisibility(View.VISIBLE);
                     modifyPlayerOne.setVisibility(View.VISIBLE);
-                    hasText = true;
+                    playerOnehasText = true;
 
-                } else {
+                    Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (!playerTwohasText){
 
                     playerTwo.setText(text);
                     playerTwoImage.setVisibility(View.VISIBLE);
                     modifyPlayerTwo.setVisibility(View.VISIBLE);
-                    hasText = true;
+                    playerTwohasText = true;
+
+                    Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
+
                 }
 
-        } else {
-            playerOne.setText(null);
-            playerTwo.setText(null);
-            hasText = false;
-        }
+                else if (!playerOne.getText().toString().equals(playerTwo.getText().toString())){
+
+                    playerOne.setText(text);
+                    Toast.makeText(getContext(), "Player modified", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    playerTwo.setText(text);
+                    Toast.makeText(getContext(), "Player modified", Toast.LENGTH_SHORT).show();
+                }
+
+            } else {
+                Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_LONG).show();
+                playerOnehasText = false;
+                playerTwohasText = false;
+
+            }
 
 
         }
+
+    }
 
 
 }

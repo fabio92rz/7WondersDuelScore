@@ -5,4 +5,6 @@
     android:layout_height="@dimen/abc_action_bar_default_height_material"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     android:background="#FFB300"
-    android:elevation="10dp"/>
+    android:elevation="10dp">
+</android.support.v7.widget.Toolbar>
+
