@@ -20,7 +20,8 @@ import android.view.View;
 public class modifynameActivity extends DialogFragment {
 
     public String name;
-    public static final String nameKey = "name";
+    public static final String mKey = "name";
+    public static final int REQUEST_CODE = 1;
 
     private void sendResult(int resultCode)
     {
@@ -30,10 +31,9 @@ public class modifynameActivity extends DialogFragment {
         }
 
         Intent i = new Intent();
-        i.putExtra(nameKey, name);
-        getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
+        i.putExtra(mKey, name);
+        getTargetFragment().onActivityResult(REQUEST_CODE, resultCode, i);
 
-        Log.d("prova passagio", "resultCode" + resultCode);
     }
 
     @Override

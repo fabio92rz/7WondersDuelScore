@@ -22,6 +22,8 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
     FloatingActionButton addPlayer;
     private static final int REQUEST_TEXT = 0;
+    private static final int MODIFY_TEXT_1 = 1;
+    private static final int MODIFY_TEXT_2 = 1;
     TextView playerOne;
     TextView playerTwo;
     ImageView playerOneImage;
@@ -58,7 +60,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        if (v == addPlayer){
+        if (v == addPlayer) {
 
             newPlayerActivity newPlayer = new newPlayerActivity();
             FragmentManager fm = getFragmentManager();
@@ -67,7 +69,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
         }
 
-        if (v == modifyPlayerOne){
+        if (v == modifyPlayerOne) {
 
             modifynameActivity modify = new modifynameActivity();
             FragmentManager fm = getFragmentManager();
@@ -75,7 +77,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
             modify.show(fm, "modifyPopup");
         }
 
-        if (v == modifyPlayerTwo){
+        if (v == modifyPlayerTwo) {
 
             modifynameActivity modify = new modifynameActivity();
             FragmentManager fm = getFragmentManager();
@@ -105,9 +107,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     playerOnehasText = true;
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
-                }
-
-                else if (!playerTwohasText){
+                } else if (!playerTwohasText) {
 
                     playerTwo.setText(text);
                     playerTwoImage.setVisibility(View.VISIBLE);
@@ -116,31 +116,28 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
 
-                }
-
-                else if (!playerOne.getText().toString().equals(playerTwo.getText().toString())){
-
-                    playerOne.setText(text);
-                    Toast.makeText(getContext(), "Player modified", Toast.LENGTH_SHORT).show();
-
                 } else {
+                    Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_LONG).show();
+                    playerOnehasText = false;
+                    playerTwohasText = false;
 
-                    playerTwo.setText(text);
-                    Toast.makeText(getContext(), "Player modified", Toast.LENGTH_SHORT).show();
                 }
-
-            } else {
-                Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_LONG).show();
-                playerOnehasText = false;
-                playerTwohasText = false;
-
             }
 
+            if (requestCode == MODIFY_TEXT_1) {
 
+                String name = data.getStringExtra(modifynameActivity.mKey);
+                if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerOne.getText().toString().equals(playerTwo.getText().toString()))
+                {
+
+                    if (playerOnehasText) {
+
+                        playerOne.setText(text);
+                        Toast.makeText(getContext(), "Player modified", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
         }
-
     }
-
-
 }
 
