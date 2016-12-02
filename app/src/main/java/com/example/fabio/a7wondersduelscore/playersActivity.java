@@ -21,9 +21,6 @@ import android.widget.Toast;
 public class playersActivity extends Fragment implements View.OnClickListener {
 
     FloatingActionButton addPlayer;
-    private static final int REQUEST_TEXT = 0;
-    private static final int MODIFY_TEXT_1 = 1;
-    private static final int MODIFY_TEXT_2 = 1;
     TextView playerOne;
     TextView playerTwo;
     ImageView playerOneImage;
@@ -32,6 +29,9 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     ImageView modifyPlayerTwo;
     private boolean playerOnehasText = false;
     private boolean playerTwohasText = false;
+    private static final int REQUEST_TEXT = 0;
+    private static final int MODIFY_TEXT_1 = 1;
+    private static final int MODIFY_TEXT_2 = 2;
 
     //Overriden method onCreateView
     @Override
@@ -73,7 +73,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
             modifynameActivity modify = new modifynameActivity();
             FragmentManager fm = getFragmentManager();
-            modify.setTargetFragment(playersActivity.this, REQUEST_TEXT);
+            modify.setTargetFragment(playersActivity.this, MODIFY_TEXT_1);
             modify.show(fm, "modifyPopup");
         }
 
@@ -81,7 +81,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
             modifynameActivity modify = new modifynameActivity();
             FragmentManager fm = getFragmentManager();
-            modify.setTargetFragment(playersActivity.this, REQUEST_TEXT);
+            modify.setTargetFragment(playersActivity.this, MODIFY_TEXT_2);
             modify.show(fm, "modifyPopup");
         }
 
@@ -123,21 +123,42 @@ public class playersActivity extends Fragment implements View.OnClickListener {
 
                 }
             }
+        }
 
-            if (requestCode == MODIFY_TEXT_1) {
+        if (requestCode == MODIFY_TEXT_1) {
 
-                String name = data.getStringExtra(modifynameActivity.mKey);
-                if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerOne.getText().toString().equals(playerTwo.getText().toString()))
-                {
+            String name = data.getStringExtra(modifynameActivity.mKey);
+            if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerTwo.getText().toString().equals(name))
+            {
 
-                    if (playerOnehasText) {
+                if (playerOnehasText) {
 
-                        playerOne.setText(text);
-                        Toast.makeText(getContext(), "Player modified", Toast.LENGTH_SHORT).show();
-                    }
+                    playerOne.setText(name);
+                    Toast.makeText(getContext(), "Player 1 modified", Toast.LENGTH_SHORT).show();
+                }
+
+                else {
+                    Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_SHORT).show();
                 }
             }
         }
+
+        if (requestCode == MODIFY_TEXT_2){
+
+            String name = data.getStringExtra(modifynameActivity.mKey);
+            if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerTwo.getText().toString().equals(name)){
+
+                if (playerTwohasText){
+
+                    playerTwo.setText(name);
+                    Toast.makeText(getContext(), "Player 2 modified", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
     }
 }
 

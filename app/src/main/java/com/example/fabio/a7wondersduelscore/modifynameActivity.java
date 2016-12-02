@@ -32,7 +32,7 @@ public class modifynameActivity extends DialogFragment {
 
         Intent i = new Intent();
         i.putExtra(mKey, name);
-        getTargetFragment().onActivityResult(REQUEST_CODE, resultCode, i);
+        getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
 
     }
 
@@ -47,7 +47,7 @@ public class modifynameActivity extends DialogFragment {
 
 
         builder.setView(v)
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Modify", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
