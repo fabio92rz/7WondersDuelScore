@@ -1,7 +1,9 @@
 package com.example.fabio.a7wondersduelscore;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -51,7 +53,6 @@ public class playersActivity extends Fragment implements View.OnClickListener {
         playerTwoImage = (ImageView) v.findViewById(R.id.player2Image);
         modifyPlayerTwo = (ImageView) v.findViewById(R.id.modifiyPlayer2);
         modifyPlayerTwo.setOnClickListener(this);
-
 
         return v;
     }
@@ -105,8 +106,13 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     playerOneImage.setVisibility(View.VISIBLE);
                     modifyPlayerOne.setVisibility(View.VISIBLE);
                     playerOnehasText = true;
+                    SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(configActivity.PLAYER_ONE_NAME, "");
+                    editor.apply();
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
+
                 } else if (!playerTwohasText) {
 
                     playerTwo.setText(text);
@@ -128,32 +134,28 @@ public class playersActivity extends Fragment implements View.OnClickListener {
         if (requestCode == MODIFY_TEXT_1) {
 
             String name = data.getStringExtra(modifynameActivity.mKey);
-            if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerTwo.getText().toString().equals(name))
-            {
+            if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerTwo.getText().toString().equals(name)) {
 
                 if (playerOnehasText) {
 
                     playerOne.setText(name);
                     Toast.makeText(getContext(), "Player 1 modified", Toast.LENGTH_SHORT).show();
-                }
-
-                else {
+                } else {
                     Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_SHORT).show();
                 }
             }
         }
 
-        if (requestCode == MODIFY_TEXT_2){
+        if (requestCode == MODIFY_TEXT_2) {
 
             String name = data.getStringExtra(modifynameActivity.mKey);
-            if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerTwo.getText().toString().equals(name)){
+            if (name.length() > 0 && !playerOne.getText().toString().equals(name) && !playerTwo.getText().toString().equals(name)) {
 
-                if (playerTwohasText){
+                if (playerTwohasText) {
 
                     playerTwo.setText(name);
                     Toast.makeText(getContext(), "Player 2 modified", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_SHORT).show();
                 }
             }
