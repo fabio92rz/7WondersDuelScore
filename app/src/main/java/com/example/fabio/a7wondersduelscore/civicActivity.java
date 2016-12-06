@@ -34,6 +34,11 @@ public class civicActivity extends Fragment {
         String playerOneName = sharedPreferences.getString(configActivity.PLAYER_ONE_NAME, "");
         String playerTwoName = sharedPreferences.getString(configActivity.PLAYER_TWO_NAME, "");
 
+        if (playerOneName!= ""){
+
+            String ciao = "ciao";
+        }
+
         playerOne = (TextView) v.findViewById(R.id.player1Civic);
         playerOneImage = (ImageView) v.findViewById(R.id.player1CivicImage);
 
