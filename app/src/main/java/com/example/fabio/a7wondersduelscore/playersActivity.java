@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,8 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        Users players = new Users();
+
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
@@ -106,10 +109,13 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     playerOneImage.setVisibility(View.VISIBLE);
                     modifyPlayerOne.setVisibility(View.VISIBLE);
                     playerOnehasText = true;
-                    SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(configActivity.PLAYER_ONE_NAME, "");
-                    editor.apply();
+
+                    Intent intent = new Intent(getActivity().getBaseContext(),
+                            civicActivity.class);
+                    intent.putExtra("playerOne", text);
+                    getActivity().startActivity(intent);
+
+                    players.setPlayerOne(text);
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
 
@@ -119,6 +125,8 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     playerTwoImage.setVisibility(View.VISIBLE);
                     modifyPlayerTwo.setVisibility(View.VISIBLE);
                     playerTwohasText = true;
+
+                    players.setPlayerTwo(text);
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
 
@@ -139,7 +147,9 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                 if (playerOnehasText) {
 
                     playerOne.setText(name);
+                    players.setPlayerOne(name);
                     Toast.makeText(getContext(), "Player 1 modified", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_SHORT).show();
                 }
@@ -154,7 +164,9 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                 if (playerTwohasText) {
 
                     playerTwo.setText(name);
+                    players.setPlayerTwo(name);
                     Toast.makeText(getContext(), "Player 2 modified", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(getContext(), "Player already inserted", Toast.LENGTH_SHORT).show();
                 }
