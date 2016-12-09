@@ -18,7 +18,7 @@ import android.widget.Toast;
  * Created by fabio on 29/11/2016.
  */
 
-public class playersActivity extends Fragment implements View.OnClickListener {
+public class playersActivity extends Fragment implements View.OnClickListener, tabsInterested {
 
     FloatingActionButton addPlayer;
     TextView playerOne;
@@ -52,10 +52,7 @@ public class playersActivity extends Fragment implements View.OnClickListener {
         modifyPlayerTwo = (ImageView) v.findViewById(R.id.modifiyPlayer2);
         modifyPlayerTwo.setOnClickListener(this);
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, 0);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-
+        Data.getCurrent().register(this);
         return v;
     }
 
@@ -94,9 +91,6 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, 0);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
@@ -111,16 +105,6 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     playerOneImage.setVisibility(View.VISIBLE);
                     modifyPlayerOne.setVisibility(View.VISIBLE);
                     playerOnehasText = true;
-
-                    //Intent intent = new Intent(getActivity().getBaseContext(),
-                        //    MainActivity.class);
-                    //intent.putExtra("playerOne", text);
-
-                    //getActivity().startActivity(intent);
-
-                    editor.putString(configActivity.PLAYER_ONE_NAME, text);
-                    editor.clear();
-                    editor.apply();
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
 
@@ -173,6 +157,14 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                 }
             }
         }
+
+    }
+
+    @Override
+    public void notifyData() {
+
+        Data.getCurrent().setPlayerOne(playerOne.getText().toString());
+        Data.getCurrent().setPlayerTwo(playerTwo.getText().toString());
 
     }
 }

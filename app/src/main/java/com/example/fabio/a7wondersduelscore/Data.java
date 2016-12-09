@@ -1,7 +1,9 @@
 package com.example.fabio.a7wondersduelscore;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.widget.TabHost;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +12,6 @@ import java.util.List;
  * Created by fabio on 06/12/2016.
  */
 
-class Tabs {
-
-    Fragment tab;
-    Tabs(){}
-}
-
 public class Data {
 
     private String playerOne;
@@ -23,7 +19,7 @@ public class Data {
 
     private static Data data;
 
-    List<Tabs> tabses = new ArrayList<Tabs>();
+    List<tabsInterested> tabses = new ArrayList<tabsInterested>();
 
     private Data(String playerOne, String playerTwo){
 
@@ -61,7 +57,9 @@ public class Data {
         this.playerTwo = playerTwo;
     }
 
-    public void register(Tabs tab){
+    public void register(tabsInterested tabs){
+
+        tabses.add(tabs);
 
 
     }
