@@ -30,9 +30,6 @@ public class civicActivity extends Fragment {
 
         View v = inflater.inflate(R.layout.civic_tab, container, false);
 
-
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-
         playerOne = (TextView) v.findViewById(R.id.player1Civic);
         playerOneImage = (ImageView) v.findViewById(R.id.player1CivicImage);
 

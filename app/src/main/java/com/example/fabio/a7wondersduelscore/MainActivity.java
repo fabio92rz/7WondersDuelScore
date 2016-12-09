@@ -1,6 +1,8 @@
 package com.example.fabio.a7wondersduelscore;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -59,13 +61,13 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#607D8B"));
         tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#607D8B"));
 
-
     }
 
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         viewPager.setCurrentItem(tab.getPosition());
+        SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(configActivity.SHARED_PREF_NAME, 0);
 
         //Players
         if (tab.getPosition() == 0){
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
             tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#0288D1"));
             tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#0288D1"));
+
+            String prova = sharedPreferences.getString(configActivity.PLAYER_ONE_NAME, "");
+            Log.d("Prova nome", "prova" + prova);
+
+            Bundle bundle=new Bundle();
+            bundle.putString("playerOne", prova);
+            civicActivity fragobj=new civicActivity();
+            fragobj.setArguments(bundle);
         }
 
         //Science

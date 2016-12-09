@@ -1,15 +1,12 @@
 package com.example.fabio.a7wondersduelscore;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +52,10 @@ public class playersActivity extends Fragment implements View.OnClickListener {
         modifyPlayerTwo = (ImageView) v.findViewById(R.id.modifiyPlayer2);
         modifyPlayerTwo.setOnClickListener(this);
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+
         return v;
     }
 
@@ -93,7 +94,8 @@ public class playersActivity extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        Users players = new Users();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(configActivity.SHARED_PREF_NAME, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
         if (resultCode != Activity.RESULT_OK) {
             return;
@@ -110,12 +112,15 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     modifyPlayerOne.setVisibility(View.VISIBLE);
                     playerOnehasText = true;
 
-                    Intent intent = new Intent(getActivity().getBaseContext(),
-                            civicActivity.class);
-                    intent.putExtra("playerOne", text);
-                    getActivity().startActivity(intent);
+                    //Intent intent = new Intent(getActivity().getBaseContext(),
+                        //    MainActivity.class);
+                    //intent.putExtra("playerOne", text);
 
-                    players.setPlayerOne(text);
+                    //getActivity().startActivity(intent);
+
+                    editor.putString(configActivity.PLAYER_ONE_NAME, text);
+                    editor.clear();
+                    editor.apply();
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
 
@@ -125,8 +130,6 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                     playerTwoImage.setVisibility(View.VISIBLE);
                     modifyPlayerTwo.setVisibility(View.VISIBLE);
                     playerTwohasText = true;
-
-                    players.setPlayerTwo(text);
 
                     Toast.makeText(getContext(), "Player inserted", Toast.LENGTH_SHORT).show();
 
@@ -147,7 +150,6 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                 if (playerOnehasText) {
 
                     playerOne.setText(name);
-                    players.setPlayerOne(name);
                     Toast.makeText(getContext(), "Player 1 modified", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -164,7 +166,6 @@ public class playersActivity extends Fragment implements View.OnClickListener {
                 if (playerTwohasText) {
 
                     playerTwo.setText(name);
-                    players.setPlayerTwo(name);
                     Toast.makeText(getContext(), "Player 2 modified", Toast.LENGTH_SHORT).show();
 
                 } else {
